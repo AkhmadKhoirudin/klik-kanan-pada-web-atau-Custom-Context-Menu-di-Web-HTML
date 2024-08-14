@@ -1,0 +1,60 @@
+<html>
+<head>
+   <style>
+      #customContextMenu {
+         position: absolute;
+         background-color: #3b3b3b;
+         color: white;
+         height: 150px;
+         width: 100px;
+         text-align: center;
+      }
+      .menuItems {
+         list-style: none;
+         font-size: 12px;
+         padding: 0;
+         margin: 0;
+      }
+      .menu{ background-color: aqua; font-size: 15px; color: #0f0f0f;}
+      .menuItems .items { padding: 5px; border-bottom: 1px solid #0f0f0f;} 
+      .menuItems .items:last-child { border: none;}
+      .menuItems .items a {text-decoration: none; color: white; font-size: 15px;}
+   </style>
+</head>
+<body>
+ 
+   </div>
+   <div id = "customContextMenu" style = "display: none;">
+   <ul class = "menuItems">
+   <li class = "menu"><a> Menu Item-1 </a></li>
+   <li class = "items"><a href = "#"> Menu Item-2 </a></li>
+   <li class = "items"><a href = "#"> Menu Item-3 </a></li>
+   <li class = "items"><a href = "#"> Menu Item-4 </a></li>
+   <li class = "items"><a href = "#"> Menu Item-5 </a></li>
+   <li class = "items"><a href = "#"> Menu Item-6</a></li>
+   </ul>
+   </div>
+   <script>
+      // hiding the menu on click to the document
+      function hideCustomContextMenu() {
+         document.getElementById('customContextMenu').style.display = "none";
+      }
+      
+      // toggling the menu on right click to the page
+      function showCustomContextMenu(event) {
+         event.preventDefault();
+         var myContextMenu = document.getElementById('customContextMenu');
+         if (myContextMenu.style.display == "block") {
+            myContextMenu.style.display = "none";
+         }
+         else {
+            myContextMenu.style.display = "block";
+            myContextMenu.style.left = event.pageX + "px";
+            myContextMenu.style.top = event.pageY + "px";
+         }
+      }
+      document.onclick = hideCustomContextMenu;
+      document.oncontextmenu = showCustomContextMenu;
+   </script>
+</body>
+</html>

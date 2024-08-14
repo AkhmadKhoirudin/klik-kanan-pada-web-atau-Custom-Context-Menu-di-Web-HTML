@@ -1,0 +1,97 @@
+<html>
+<head>
+   <style>
+#customContextMenu {
+    position: absolute;
+    background-color: #2c3e50; /* Warna background yang lebih gelap */
+    color: white;
+    width: 150px; /* Memperluas lebar menu */
+    border-radius: 8px; /* Menambahkan sudut membulat */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan untuk tampilan yang lebih menarik */
+    text-align: left; /* Menyelaraskan teks ke kiri */
+    z-index: 1000; /* Memastikan menu berada di depan elemen lain */
+}
+
+.menuItems {
+    list-style: none;
+    font-size: 14px;
+    padding: 8px 0;
+    margin: 0;
+}
+
+.menu {
+    background-color: #3498db; /* Warna biru untuk menu utama */
+    font-size: 16px;
+    color: #ffffff;
+    padding: 10px 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #2980b9; /* Warna yang lebih gelap untuk border bawah */
+    border-radius: 8px 8px 0 0; /* Membulatkan sudut atas */
+}
+
+.menuItems .items {
+    padding: 8px 15px;
+    border-bottom: 1px solid #34495e; /* Border dengan warna abu-abu gelap */
+    transition: background-color 0.2s ease-in-out;
+}
+
+.menuItems .items:last-child {
+    border-bottom: none;
+    border-radius: 0 0 8px 8px; /* Membulatkan sudut bawah */
+}
+
+.menuItems .items a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    display: block;
+}
+
+.menuItems .items:hover {
+    background-color: #2980b9; /* Warna hover yang lebih cerah */
+}
+
+.menuItems .items a:hover {
+    color: #ecf0f1; /* Warna teks yang lebih terang saat di-hover */
+}
+
+   </style>
+</head>
+<body>
+ 
+   </div>
+   <div id = "customContextMenu" style = "display: none;">
+   <ul class = "menuItems">
+   <li class = "menu"><a> MENU </a></li>
+   <li class = "items"><a href = "#"> refresh</a></li>
+   <li class = "items"><a href = "#"> undo</a></li>
+   <li class = "items"><a href = "#"> redo</a></li>
+   <li class = "items"><a href = "#"> delete </a></li>
+   <li class = "items"><a href = "#"> upload </a></li>
+
+   </ul>
+   </div>
+   <script>
+      // hiding the menu on click to the document
+      function hideCustomContextMenu() {
+         document.getElementById('customContextMenu').style.display = "none";
+      }
+      
+      // toggling the menu on right click to the page
+      function showCustomContextMenu(event) {
+         event.preventDefault();
+         var myContextMenu = document.getElementById('customContextMenu');
+         if (myContextMenu.style.display == "block") {
+            myContextMenu.style.display = "none";
+         }
+         else {
+            myContextMenu.style.display = "block";
+            myContextMenu.style.left = event.pageX + "px";
+            myContextMenu.style.top = event.pageY + "px";
+         }
+      }
+      document.onclick = hideCustomContextMenu;
+      document.oncontextmenu = showCustomContextMenu;
+   </script>
+</body>
+</html>
